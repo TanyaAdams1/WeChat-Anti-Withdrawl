@@ -7,13 +7,13 @@
     {
       "all_frames": true,
       "js": [
-        "js/content.js",
-        "js/jquery-3.3.1.min.js"
+        "js/jquery-3.3.1.min.js",
+        "js/content.js"
       ],
       "matches": [
         "*://*.qq.com/*"
       ],
-      "run_at": "document_idle"
+      "run_at": "document_end"
     }
   ],
   "web_accessible_resources": [
