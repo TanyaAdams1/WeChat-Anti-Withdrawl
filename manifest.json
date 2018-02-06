@@ -1,0 +1,26 @@
+{
+  "name": "WeChat Anti-Withdrawl",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "description": "若要人不知,除非己莫为",
+  "content_scripts": [
+    {
+      "all_frames": true,
+      "js": [
+        "js/content.js"
+      ],
+      "matches": [
+        "*://*.qq.com/*"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    "js/inject.js"
+  ],
+  "icons": {
+    "128": "img/icon.png",
+    "64": "img/icon.png",
+    "32": "img/icon.png"
+  }
+}
