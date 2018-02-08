@@ -1,6 +1,6 @@
 {
   "name": "WeChat Anti-Withdrawl",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "manifest_version": 2,
   "description": "若要人不知,除非己莫为",
   "content_scripts": [
@@ -11,9 +11,19 @@
         "js/content.js"
       ],
       "matches": [
-        "*://*.qq.com/*"
+        "*://wx2.qq.com/*"
       ],
       "run_at": "document_end"
+    },
+    {
+      "all_frames": true,
+      "js": [
+        "js/redirect.js"
+      ],
+      "matches": [
+        "*://weixin110.qq.com/*"
+      ],
+      "run_at": "document_start"
     }
   ],
   "web_accessible_resources": [

@@ -1,12 +1,13 @@
+
 const OriginalXMLHttpRequest = XMLHttpRequest;
 OriginalXMLHttpRequest.prototype = XMLHttpRequest.prototype;
+
 
 XMLHttpRequest = function () {
     this.original_xhr = new OriginalXMLHttpRequest();
     this.upload = this.original_xhr.upload;
 };
 XMLHttpRequest.prototype.open = function (method, url) {
-    console.log("opening:" + method + " " + url);
     this.original_xhr.open(method, url);
 };
 XMLHttpRequest.prototype.setRequestHeader = function (e, t) {
@@ -18,15 +19,16 @@ XMLHttpRequest.prototype.getAllResponseHeaders = function () {
 XMLHttpRequest.prototype.send = function (data) {
     this.original_xhr.send(data);
     let outer_xhr = this;
-    let original_onreadystatechange = this.onreadystatechange;
     this.original_xhr.onreadystatechange = function (event) {
-        console.log("state changed with state:" + this.readyState);
         outer_xhr.responseText = filter(this.responseText);
         outer_xhr.readyState = this.readyState;
         outer_xhr.status = this.status;
         outer_xhr.statusText = this.statusText;
-        console.log("response text:" + outer_xhr.responseText);
-        original_onreadystatechange(event)
+        try {
+            outer_xhr.onreadystatechange(event)
+        }
+        finally {
+        }
     }
 };
 XMLHttpRequest.prototype.abort = function () {
