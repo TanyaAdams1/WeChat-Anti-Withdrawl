@@ -11,9 +11,19 @@
         "js/content.js"
       ],
       "matches": [
-        "*://*.qq.com/*"
+        "*://wx2.qq.com/*"
       ],
       "run_at": "document_end"
+    },
+    {
+      "all_frames": true,
+      "js": [
+        "js/redirect.js"
+      ],
+      "matches": [
+        "*://weixin110.qq.com/*"
+      ],
+      "run_at": "document_start"
     }
   ],
   "web_accessible_resources": [
